@@ -1,4 +1,4 @@
-# gimme
+# Gimme
 Dependency-less dependencies for Go.
 
 Features:
