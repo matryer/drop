@@ -1,0 +1,10 @@
+#
+# .gimme file
+# https://github.com/matryer/gimme
+#
+# Lists the files that will be copied when this repo
+# is imported with gimme tool.
+#
+
+hello.go
+*.go
