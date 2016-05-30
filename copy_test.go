@@ -65,7 +65,7 @@ func TestCopy(t *testing.T) {
 	}
 
 	expected := []string{
-		"// ADDED BY GIMME - https://github.com/matryer/gimme (v0.3)",
+		"// ADDED BY GIMME - https://github.com/matryer/gimme (v" + version + ")",
 		"//  source: github.com/matryer/gimme-test /explicit (930423d3f44496147a1d1b05610dba22ed4aaa51)",
 		"//  update: gimme -f github.com/matryer/gimme-test explicit",
 		"// license: license-title (see repo for details)",
