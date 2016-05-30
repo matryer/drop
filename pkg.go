@@ -7,6 +7,10 @@ import (
 	"os"
 )
 
+// errMissingPackage is returned by pkg if it cannot find
+// the package for the specified package.
+var errMissingPackage = errors.New("cannot discover package name")
+
 // pkg gets the go package name from the specified directory.
 func pkg(p string) (string, error) {
 	fset := token.NewFileSet()
@@ -22,5 +26,5 @@ func pkg(p string) (string, error) {
 	for k := range pkgs {
 		return k, nil // return first package
 	}
-	return "", errors.New("failed to discover package")
+	return "", errMissingPackage
 }
