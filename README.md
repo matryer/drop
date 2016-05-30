@@ -3,7 +3,7 @@ Dependency-less dependencies for Go.
 
 Features:
 
-* Gimme copies individual source files into your project
+* Gimme copies dependency source files into your project
 * Rewrites `package` declaration to match your code
 * Familiar [usage](#usage) - uses `go get` under the hood
 * Configurable by [package authors](#package-authors)
