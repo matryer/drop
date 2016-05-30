@@ -4,8 +4,10 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -60,18 +62,25 @@ func copyfile(dest, src, path, file, id, pkgName, license string) (string, error
 	}
 	defer out.Close()
 
-	err = writeHeader(out, src, path, id, license)
-	if err != nil {
-		return "", err
-	}
-
-	s := bufio.NewScanner(in)
-	for s.Scan() {
-		if bytes.HasPrefix(s.Bytes(), pkgLinePrefix) {
-			fmt.Fprintln(out, "package", pkgName)
-			continue
+	if shouldProcess(fname) {
+		err = writeHeader(out, src, path, id, license)
+		if err != nil {
+			return "", err
 		}
-		fmt.Fprintln(out, s.Text())
+		s := bufio.NewScanner(in)
+		for s.Scan() {
+			if bytes.HasPrefix(s.Bytes(), pkgLinePrefix) {
+				fmt.Fprintln(out, "package", pkgName)
+				continue
+			}
+			fmt.Fprintln(out, s.Text())
+		}
+	} else {
+		// normal copy
+		_, err = io.Copy(out, in)
+		if err != nil {
+			return "", err
+		}
 	}
 
 	err = out.Sync()
@@ -81,4 +90,10 @@ func copyfile(dest, src, path, file, id, pkgName, license string) (string, error
 
 	on("+", destFilename)
 	return destFile, nil
+}
+
+func shouldProcess(filename string) bool {
+	ext := filepath.Ext(filename)
+	ext = strings.ToLower(ext)
+	return ext == ".go"
 }
