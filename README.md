@@ -55,7 +55,7 @@ flags:
   -outformat string
     	filename format (default "%s")
   -package string
-    	package name
+    	package name (default auto discover)
   -v	verbose logging
   -version
     	print version
