@@ -16,7 +16,7 @@ func noop() {}
 
 func main() {
 	var (
-		pkg         = flag.String("package", "", "package name")
+		pkg         = flag.String("package", "", "package name (default auto discover)")
 		verbose     = flag.Bool("v", false, "verbose logging")
 		help        = flag.Bool("help", false, "show help")
 		showVersion = flag.Bool("version", false, "print version")
