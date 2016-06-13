@@ -26,11 +26,11 @@ func (e errGoGet) Error() string {
 func goget(source, path string) (repo, func(), error) {
 	done := noop
 	r := repo{}
-	tmp, err := ioutil.TempDir(".", ".gimme-tmp")
+	tmp, err := ioutil.TempDir(".", ".drop-tmp")
 	if err != nil {
 		return r, done, err
 	}
-	gopath := filepath.Join(tmp, "gimme-gopath")
+	gopath := filepath.Join(tmp, "drop-gopath")
 	gopath, err = filepath.Abs(gopath)
 	if err != nil {
 		return r, done, err

@@ -60,7 +60,7 @@ func main() {
 		path = args[1]
 	}
 
-	files, err := gimme(src, path, dest)
+	files, err := drop(src, path, dest)
 	if err != nil {
 		fatal(err)
 	}
@@ -74,11 +74,11 @@ func fatal(args ...interface{}) {
 }
 
 func usage() {
-	fmt.Println(`gimme v` + version + `
-https://github.com/matryer/gimme
+	fmt.Println(`drop v` + version + `
+https://github.com/matryer/drop
 
 usage:
-  gimme [flags] import [path]
+  drop [flags] import [path]
 
   flags       - see below
   import      - import path to go get

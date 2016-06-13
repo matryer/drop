@@ -14,7 +14,7 @@ import (
 
 const (
 	defaultPattern = "*.go"
-	gimmeFile      = ".gimme"
+	dropFile       = ".drop"
 )
 
 var ignoreFiles = []string{"doc.go"}
@@ -22,7 +22,7 @@ var ignoreFiles = []string{"doc.go"}
 var errNeedDir = errors.New("expected directory")
 
 // files gets a list of files to include from the specified path.
-// If no .gimme file is specified, default files are selected.
+// If no .drop file is specified, default files are selected.
 func files(path string) ([]string, error) {
 	info, err := os.Stat(path)
 	if err != nil {
@@ -32,7 +32,7 @@ func files(path string) ([]string, error) {
 		return nil, errNeedDir
 	}
 
-	files, err := gimmefile(path)
+	files, err := dropfile(path)
 	if err == nil {
 		return files, nil
 	}
@@ -88,11 +88,11 @@ func extractFirstLine(path string) (string, error) {
 	return "", nil
 }
 
-// gimmefile gets a cleaned list of files from the .gimme
+// dropfile gets a cleaned list of files from the .drop
 // file at the specified path.
-func gimmefile(path string) ([]string, error) {
-	gimmefile := filepath.Join(path, gimmeFile)
-	src, err := ioutil.ReadFile(gimmefile)
+func dropfile(path string) ([]string, error) {
+	dropfile := filepath.Join(path, dropFile)
+	src, err := ioutil.ReadFile(dropfile)
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +109,7 @@ func gimmefile(path string) ([]string, error) {
 		relPattern := filepath.Join(path, text)
 		theseFiles, err := filepath.Glob(relPattern)
 		if err != nil {
-			return nil, errLine{file: gimmefile, n: lineNumber, err: err}
+			return nil, errLine{file: dropfile, n: lineNumber, err: err}
 		}
 		files = append(files, theseFiles...)
 	}
@@ -131,7 +131,7 @@ func cleanFiles(files ...string) []string {
 		for _, ignore := range ignoreFiles {
 			match, err := filepath.Match(ignore, filepath.Base(file))
 			if err != nil {
-				log.Println("gimme: filepath.Match:", err)
+				log.Println("drop: filepath.Match:", err)
 			}
 			if match {
 				include = false

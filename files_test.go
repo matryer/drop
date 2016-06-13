@@ -19,8 +19,8 @@ func TestFiles(t *testing.T) {
 	}
 }
 
-func TestFilesWithGimmeFile(t *testing.T) {
-	f, err := files("./test/withgimmefile")
+func TestFilesWithDropFile(t *testing.T) {
+	f, err := files("./test/withdropfile")
 	if err != nil {
 		t.Errorf("files: %s", err)
 	}
@@ -28,13 +28,13 @@ func TestFilesWithGimmeFile(t *testing.T) {
 		t.Errorf("expected 3 file, got %d", len(f))
 		return
 	}
-	if f[0] != "test/withgimmefile/hello.go" {
+	if f[0] != "test/withdropfile/hello.go" {
 		t.Error("f[0] wrong")
 	}
-	if f[1] != "test/withgimmefile/consts.go" {
+	if f[1] != "test/withdropfile/consts.go" {
 		t.Error("f[1] wrong")
 	}
-	if f[2] != "test/withgimmefile/hello_test.go" {
+	if f[2] != "test/withdropfile/hello_test.go" {
 		t.Error("f[2] wrong")
 	}
 }

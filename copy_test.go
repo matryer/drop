@@ -11,7 +11,7 @@ import (
 
 func TestCopy(t *testing.T) {
 	info = off
-	src := "github.com/matryer/gimme-test"
+	src := "github.com/matryer/drop-test"
 	repo, done, err := goget(src, "explicit")
 	if err != nil {
 		t.Errorf("goget: %s", err)
@@ -30,7 +30,7 @@ func TestCopy(t *testing.T) {
 	}
 
 	destDir := os.TempDir()
-	dest := filepath.Join(destDir, "gimme-copy-test")
+	dest := filepath.Join(destDir, "drop-copy-test")
 	err = os.MkdirAll(dest, 0777)
 	if err != nil {
 		t.Errorf("MkDirAll: %s %v: %s", dest, 0777, err)
@@ -65,9 +65,9 @@ func TestCopy(t *testing.T) {
 	}
 
 	expected := []string{
-		"// ADDED BY GIMME - https://github.com/matryer/gimme (v" + version + ")",
-		"//  source: github.com/matryer/gimme-test /explicit (930423d3f44496147a1d1b05610dba22ed4aaa51)",
-		"//  update: gimme -f github.com/matryer/gimme-test explicit",
+		"// ADDED BY DROP - https://github.com/matryer/drop (v" + version + ")",
+		"//  source: github.com/matryer/drop-test /explicit (930423d3f44496147a1d1b05610dba22ed4aaa51)",
+		"//  update: drop -f github.com/matryer/drop-test explicit",
 		"// license: license-title (see repo for details)",
 		"package target",
 	}
@@ -81,8 +81,8 @@ func TestCopy(t *testing.T) {
 
 func TestOverwriteCheck(t *testing.T) {
 	info = off
-	src := "github.com/matryer/gimme-test"
-	repo, done, err := goget("github.com/matryer/gimme-test", "")
+	src := "github.com/matryer/drop-test"
+	repo, done, err := goget("github.com/matryer/drop-test", "")
 	if err != nil {
 		t.Errorf("goget: %s", err)
 		return
@@ -100,7 +100,7 @@ func TestOverwriteCheck(t *testing.T) {
 	}
 
 	destDir := os.TempDir()
-	dest := filepath.Join(destDir, "gimme-copy-test")
+	dest := filepath.Join(destDir, "drop-copy-test")
 	err = os.MkdirAll(dest, 0777)
 	if err != nil {
 		t.Errorf("MkDirAll: %s %v: %s", dest, 0777, err)

@@ -1,0 +1,10 @@
+#
+# .drop file
+# https://github.com/matryer/drop
+#
+# Lists the files that will be copied when this repo
+# is imported with drop tool.
+#
+
+hello.go
+*.go

@@ -1,6 +1,6 @@
 package main
 
-func gimme(source, path, dest string) ([]string, error) {
+func drop(source, path, dest string) ([]string, error) {
 	repo, done, err := goget(source, path)
 	if err != nil {
 		return nil, err

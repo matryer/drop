@@ -7,11 +7,11 @@ import (
 	"testing"
 )
 
-func TestGimme(t *testing.T) {
+func TestDrop(t *testing.T) {
 	info = off
 
 	destDir := os.TempDir()
-	dest := filepath.Join(destDir, "gimme-project")
+	dest := filepath.Join(destDir, "drop-project")
 	err := os.MkdirAll(dest, 0777)
 	if err != nil {
 		t.Errorf("MkDirAll: %s %v: %s", dest, 0777, err)
@@ -28,9 +28,9 @@ func TestGimme(t *testing.T) {
 		return
 	}
 
-	files, err := gimme("github.com/matryer/gimme-test", "", dest)
+	files, err := drop("github.com/matryer/drop-test", "", dest)
 	if err != nil {
-		t.Errorf("gimme: %s", err)
+		t.Errorf("drop: %s", err)
 		return
 	}
 	if len(files) != 2 {
@@ -39,11 +39,11 @@ func TestGimme(t *testing.T) {
 
 }
 
-func TestGimmeSubPackages(t *testing.T) {
+func TestDropSubPackages(t *testing.T) {
 	info = off
 
 	destDir := os.TempDir()
-	dest := filepath.Join(destDir, "gimme-project")
+	dest := filepath.Join(destDir, "drop-project")
 	err := os.MkdirAll(dest, 0777)
 	if err != nil {
 		t.Errorf("MkDirAll: %s %v: %s", dest, 0777, err)
@@ -60,9 +60,9 @@ func TestGimmeSubPackages(t *testing.T) {
 		return
 	}
 
-	files, err := gimme("github.com/matryer/gimme-test", "sub", dest)
+	files, err := drop("github.com/matryer/drop-test", "sub", dest)
 	if err != nil {
-		t.Errorf("gimme: %s", err)
+		t.Errorf("drop: %s", err)
 		return
 	}
 	if len(files) != 3 {
@@ -71,11 +71,11 @@ func TestGimmeSubPackages(t *testing.T) {
 
 }
 
-func TestGimmeSubPackagesWithGimmeFile(t *testing.T) {
+func TestDropSubPackagesWithDropFile(t *testing.T) {
 	info = off
 
 	destDir := os.TempDir()
-	dest := filepath.Join(destDir, "gimme-project")
+	dest := filepath.Join(destDir, "drop-project")
 	err := os.MkdirAll(dest, 0777)
 	if err != nil {
 		t.Errorf("MkDirAll: %s %v: %s", dest, 0777, err)
@@ -92,9 +92,9 @@ func TestGimmeSubPackagesWithGimmeFile(t *testing.T) {
 		return
 	}
 
-	files, err := gimme("github.com/matryer/gimme-test", "explicit", dest)
+	files, err := drop("github.com/matryer/drop-test", "explicit", dest)
 	if err != nil {
-		t.Errorf("gimme: %s", err)
+		t.Errorf("drop: %s", err)
 		return
 	}
 	if len(files) != 4 {

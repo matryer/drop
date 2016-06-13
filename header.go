@@ -7,12 +7,12 @@ import (
 )
 
 func writeHeader(w io.Writer, src, path, id, license string) error {
-	_, err := fmt.Fprintln(w, "// ADDED BY GIMME - https://github.com/matryer/gimme (v"+version+")")
+	_, err := fmt.Fprintln(w, "// ADDED BY DROP - https://github.com/matryer/drop (v"+version+")")
 	if err != nil {
 		return err
 	}
 	desc := "//  source: " + src
-	update := "//  update: gimme -f " + src
+	update := "//  update: drop -f " + src
 	if len(path) > 0 {
 		desc += " /" + strings.TrimPrefix(path, "/")
 		update += " " + path

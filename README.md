@@ -1,9 +1,9 @@
-# Gimme
+# Drop
 Dependency-less dependencies for Go.
 
 Features:
 
-* Gimme copies dependency source files into your project
+* Drop copies dependency source files into your project
 * Rewrites `package` declaration to match your code
 * Familiar [usage](#usage) - uses `go get` under the hood
 * Configurable by [package authors](#package-authors)
@@ -20,13 +20,13 @@ Get started:
 From inside your project (where files will be copied):
 
 ```
-gimme {import-path}
+drop {import-path}
 ```
 
 For example, to add the retry functionality from [github.com/matryer/try](https://github.com/matryer/try):
 
 ```
-gimme github.com/matryer/try
+drop github.com/matryer/try
 ```
 
 The `*.go` files from the package will be copied into your project.
@@ -36,13 +36,13 @@ The `*.go` files from the package will be copied into your project.
 Install with:
 
 ```
-go install github.com/matryer/gimme
+go install github.com/matryer/drop
 ```
 
 ## Usage
 
 ```
-  gimme [flags] import [path]
+  drop [flags] import [path]
 
   flags       - see below
   import      - import path to go get
@@ -64,13 +64,13 @@ flags:
 ## Package authors
 
 By default, all `*.go` files are copied (including test files). To explicitly
-specify what is copied, you can add a `.gimme` file to the directory, where
+specify what is copied, you can add a `.drop` file to the directory, where
 each line is a file, or [filepath.Match pattern](https://golang.org/pkg/path/filepath/#Match):
 
-### Example `.gimme` file
+### Example `.drop` file
 
 ```
-# .gimme file for this project
+# .drop file for this project
 
 something.go
 something_test.go
