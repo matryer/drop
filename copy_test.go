@@ -19,7 +19,7 @@ func TestCopy(t *testing.T) {
 	}
 	defer done()
 
-	if repo.id != "930423d3f44496147a1d1b05610dba22ed4aaa51" {
+	if repo.id != "cbc351ddce71e457b1e7dcbb9deedcdc7434af70" {
 		t.Errorf("unexpected id: %s", repo.id)
 	}
 
@@ -66,7 +66,7 @@ func TestCopy(t *testing.T) {
 
 	expected := []string{
 		"// ADDED BY DROP - https://github.com/matryer/drop (v" + version + ")",
-		"//  source: github.com/matryer/drop-test /explicit (930423d3f44496147a1d1b05610dba22ed4aaa51)",
+		"//  source: github.com/matryer/drop-test /explicit (cbc351ddce71e457b1e7dcbb9deedcdc7434af70)",
 		"//  update: drop -f github.com/matryer/drop-test explicit",
 		"// license: license-title (see repo for details)",
 		"package target",
@@ -89,7 +89,7 @@ func TestOverwriteCheck(t *testing.T) {
 	}
 	defer done()
 
-	if repo.id != "930423d3f44496147a1d1b05610dba22ed4aaa51" {
+	if repo.id != "cbc351ddce71e457b1e7dcbb9deedcdc7434af70" {
 		t.Errorf("unexpected id: %s", repo.id)
 	}
 

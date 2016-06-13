@@ -18,7 +18,7 @@ func TestGoGet(t *testing.T) {
 	if !strings.HasSuffix(repo.path, "src/github.com/matryer/drop-test/explicit") {
 		t.Errorf("path: %s", repo.path)
 	}
-	if repo.id != "930423d3f44496147a1d1b05610dba22ed4aaa51" {
+	if repo.id != "cbc351ddce71e457b1e7dcbb9deedcdc7434af70" {
 		t.Errorf("id: %s", repo.id)
 	}
 

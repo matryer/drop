@@ -26,9 +26,12 @@ func (e errGoGet) Error() string {
 func goget(source, path string) (repo, func(), error) {
 	done := noop
 	r := repo{}
-	tmp, err := ioutil.TempDir(".", ".drop-tmp")
+	tmp, err := ioutil.TempDir(".", ".drop-tmp-")
 	if err != nil {
 		return r, done, err
+	}
+	done = func() {
+		os.RemoveAll(tmp)
 	}
 	gopath := filepath.Join(tmp, "drop-gopath")
 	gopath, err = filepath.Abs(gopath)
@@ -38,9 +41,6 @@ func goget(source, path string) (repo, func(), error) {
 	err = os.MkdirAll(gopath, 0777)
 	if err != nil {
 		return r, done, err
-	}
-	done = func() {
-		os.RemoveAll(tmp)
 	}
 	info("go get -d", source)
 	goget := exec.Command("go", "get", "-d", source)
