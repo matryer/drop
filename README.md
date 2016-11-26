@@ -36,7 +36,7 @@ The `*.go` files from the package will be copied into your project.
 Install with:
 
 ```
-go install github.com/matryer/drop
+go get github.com/matryer/drop
 ```
 
 ## Usage
